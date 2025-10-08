@@ -2,7 +2,7 @@
 A script that takes an image and visualises it as a text-based ASCII art in a browser.
 
 ## Preview
-![ASCII
+![Preview Image](preview.png)
 
 ## How to Use
 1. Upload an image file in the same folder as index.html
