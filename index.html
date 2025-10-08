@@ -4,27 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body style="margin: 0; line-height: 85%; letter-spacing: 2px; font-size: 10px;">
+    <style>
+        body {
+            margin: 0;
+            line-height: 0.85;
+            letter-spacing: 2px;
+            font-size: 10px;
+        }
 
-    <img id="original" alt="original" style="max-width: 90%; height: auto; margin-top: 20px;" />
-    <canvas canvas id="canvas" width="300" height="300" style="display:none;"></canvas>
-    <h4 style="font-family: consolas; white-space: pre; line-height: 0.6; font-size: 6px; letter-spacing: 0px;"></h4>
+        #original {
+            max-width: 90%;
+            height: auto;
+            margin-top: 20px;
+            display: block;
+        }
+
+        #canvas {
+            display: none;
+        }
+
+        h4 {
+            font-family: Consolas;
+            white-space: pre;
+            line-height: 0.6;
+            font-size: 6px;
+            letter-spacing: 0px;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="original" alt="Original image" />
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <h4></h4>
     
     <script>
 
         // Put your original image file here
-        const imageFile = 'yourImageFile.png';
+        const imageFile = "yourImageToConvert.png";
 
-        document.querySelector('#original').src = imageFile;
+        document.querySelector("#original").src = imageFile;
 
         const img = new Image();
         img.src = imageFile;
-        const canvas = document.querySelector('#canvas');
-        const ctx = canvas.getContext('2d');
-        const ascii = '@$#Y!=+~- ';
 
-        img.addEventListener('load', function() {
+        const canvas = document.querySelector("#canvas");
+        const ctx = canvas.getContext("2d");
+
+        const ascii = "@$#Y!=+~- ";
+
+        img.addEventListener("load", function() {
             // Resize canvas to match image
             canvas.width = img.width;
             canvas.height = img.height;
@@ -51,9 +80,8 @@
                 }
                 asciiImage += "<br>";
             }
-            document.querySelector('h4').innerHTML = asciiImage;
+            document.querySelector("h4").innerHTML = asciiImage;
         });
-
     </script>
 
 </body>
