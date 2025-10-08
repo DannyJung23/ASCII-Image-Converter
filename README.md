@@ -1,6 +1,9 @@
 # ASCII-Image-Converter
 A script that takes an image and visualises it as a text-based ASCII art in a browser.
 
+## Preview
+![ASCII
+
 ## How to Use
 1. Upload an image file in the same folder as index.html
 2. Replace the value to your filename at `const imageFile = 'yourImageFile.png';`
@@ -27,7 +30,7 @@ Tune how the ASCII image looks by:
   ```
 - Modifying the contrast by changing ASCII character set to darker/lighter characters:
   ```javascript
-  const ascii = '@$#Y!=+~- ';
+  const ascii = "@$#Y!=+~- ";
   ```
 - Changing the font family or size in the `<h4>` style:
   ```html
