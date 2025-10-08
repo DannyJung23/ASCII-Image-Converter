@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body style="margin: 0; line-height: 85%; letter-spacing: 2px; font-size: 10px;">
+
+    <img id="original" alt="original" style="max-width: 90%; height: auto; margin-top: 20px;" />
+    <canvas canvas id="canvas" width="300" height="300" style="display:none;"></canvas>
+    <h4 style="font-family: consolas; white-space: pre; line-height: 0.6; font-size: 6px; letter-spacing: 0px;"></h4>
+    
+    <script>
+
+        // Put your original image file here
+        const imageFile = 'yourImageFile.png';
+
+        document.querySelector('#original').src = imageFile;
+
+        const img = new Image();
+        img.src = imageFile;
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+        const ascii = '@$#Y!=+~- ';
+
+        img.addEventListener('load', function() {
+            // Resize canvas to match image
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+
+            let asciiImage = "";
+
+            // Sampling rate
+            const step = 3;
+
+            for (let j = 0; j < img.height; j += step) {
+                for (let i = 0; i < img.width; i += step) {
+
+                    // Output RGBA color code for a pixel (x, y, x-outputSize, y-outputSize)
+                    const pixel = ctx.getImageData(i, j, 1, 1).data;
+
+                    // Converting RGB to Greyscale
+                    const gray = 0.299*pixel[0] + 0.587*pixel[1] + 0.114*pixel[2];
+
+                    // Normalising greyscale to map an ascii character
+                    const index = Math.floor(gray/25.6);
+
+                    asciiImage += ascii[index];
+                }
+                asciiImage += "<br>";
+            }
+            document.querySelector('h4').innerHTML = asciiImage;
+        });
+
+    </script>
+
+</body>
+</html>
